@@ -14,6 +14,7 @@ public class StartActivity extends AppCompatActivity {
 
 
     private Button logout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
