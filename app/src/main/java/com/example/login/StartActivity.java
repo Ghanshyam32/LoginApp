@@ -2,24 +2,32 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class StartActivity extends AppCompatActivity {
 
-
+    private Button add;
+    private EditText name;
     private Button logout;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
+        name = findViewById(R.id.addName);
+        add = findViewById(R.id.add);
         logout = findViewById(R.id.btnLogout);
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -31,5 +39,25 @@ public class StartActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+//        HashMap<String, Object> map = new HashMap<>();
+//        map.put("Name", "Tony Stark");
+//        map.put("Email", "tony.stark@gmail.com");
+//
+//        FirebaseDatabase.getInstance().getReference().child("Avengers").child("Details").updateChildren(map);
+
+    add.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String txt_name = name.getText().toString();
+            if(txt_name.isEmpty()){
+                Toast.makeText(StartActivity.this, "No name entered",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                FirebaseDatabase.getInstance().getReference().child("Avengers").push().child("Name").setValue(txt_name);
+                Toast.makeText(StartActivity.this, "Adding Name..",Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
     }
-}
+}   
