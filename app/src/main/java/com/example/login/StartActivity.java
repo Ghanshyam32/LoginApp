@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -57,34 +56,35 @@ public class StartActivity extends AppCompatActivity {
 //
 //        FirebaseDatabase.getInstance().getReference().child("Avengers").child("Details").updateChildren(map);
 
-    add.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            String txt_name = name.getText().toString();
-            if(txt_name.isEmpty()){
-                Toast.makeText(StartActivity.this, "No name entered",Toast.LENGTH_SHORT).show();
-            }
-            else{
-                FirebaseDatabase.getInstance().getReference().child("Avengers").push().child("Name").setValue(txt_name);
-                Toast.makeText(StartActivity.this, "Adding Name..",Toast.LENGTH_SHORT).show();
-            }
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txt_name = name.getText().toString();
+                if (txt_name.isEmpty()) {
+                    Toast.makeText(StartActivity.this, "No name entered", Toast.LENGTH_SHORT).show();
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("Information").child("name").setValue(txt_name);
+                    Toast.makeText(StartActivity.this, "Adding Name..", Toast.LENGTH_SHORT).show();
+                }
 
-        }
-    });
+            }
+        });
 
         ArrayList<String> list = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item, list);
         listView.setAdapter(adapter);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Avengers");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Information");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    list.add(snapshot.getValue().toString());
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Information info = snapshot.getValue(Information.class);
+                    String txt = info.getName() + " : " + info.getNumber();
+                    list.add(txt);
                 }
-                    adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
