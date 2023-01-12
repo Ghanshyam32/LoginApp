@@ -25,6 +25,7 @@ public class SignUp extends AppCompatActivity {
     private Button loginBtn;
 
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,16 +40,14 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String  txt_email = email.getText().toString();
+                String txt_email = email.getText().toString();
                 String txt_Password = password.getText().toString();
 
-                if(TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_Password)){
+                if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_Password)) {
                     Toast.makeText(SignUp.this, "Empty Credentials", Toast.LENGTH_SHORT).show();
-                }
-                else if(txt_Password.length()<6){
+                } else if (txt_Password.length() < 6) {
                     Toast.makeText(SignUp.this, "Password Should be of Atleast of 8 Characters", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     registerUser(txt_email, txt_Password);
                 }
                 {
@@ -60,12 +59,11 @@ public class SignUp extends AppCompatActivity {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(SignUp.this, "Signing Up", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(SignUp.this, StartActivity.class));
 //                            finish();
-                        }
-                        else{
+                        } else {
                             Toast.makeText(SignUp.this, "Signing Up", Toast.LENGTH_SHORT).show();
                         }
                     }
