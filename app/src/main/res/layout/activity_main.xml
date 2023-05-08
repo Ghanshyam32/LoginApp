@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_marginTop="120dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"
+        android:src= "@drawable/reading"
+        app:layout_constraintBottom_toTopOf="@+id/txtLoginHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtLoginHeader"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="Welcome to Quiz App"
+        android:textSize="33sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtLoginSubHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/txtLoginSubHeader"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo"
+        android:gravity="center"
+        android:text="Education is the most powerful weapon which \nyou can use to change the world."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541"
+        tools:ignore="HardcodedText" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/curves"
+        android:fontFamily="@font/baloo"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/tp"
+        android:fontFamily="@font/baloo"
+        android:text="Signup"
+        android:textColor="#700303"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
